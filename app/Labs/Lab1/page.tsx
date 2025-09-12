@@ -228,12 +228,12 @@ export default function Lab1() {
             {/*Buttons*/}
             <h5 id="wd-buttons">Buttons</h5>
             {/*Told to skip this exercise*/}
-            {/*<button*/}
-            {/*    type="button"*/}
-            {/*    onClick={() => alert('Life is Good!')}*/}
-            {/*    id="wd-all-good">*/}
-            {/*    Hello World!*/}
-            {/*</button>*/}
+            <button
+                type="button"
+                // onClick={() => alert('Life is Good!')}
+                id="wd-all-good">
+                Hello World!
+            </button>
 
 
             <h5 id="wd-radio-buttons">Radio buttons</h5>
