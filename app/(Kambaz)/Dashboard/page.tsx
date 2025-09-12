@@ -8,7 +8,7 @@ export default function Dashboard() {
             <div id="wd-dashboard-courses">
                 <div className="wd-dashboard-course">
                     <Link href="/Courses/1234" className="wd-dashboard-course-link">
-                        <Image src="/images/reactjs.webp" width={200} height={150} />
+                        <Image src="/images/reactjs.webp" width={200} height={150} alt={""}/>
                         <div>
                             <h5> CS1234 React JS </h5>
                             <p className="wd-dashboard-course-title">
@@ -21,7 +21,7 @@ export default function Dashboard() {
                 <br />
                 <div className="wd-dashboard-course">
                     <Link href="/Courses/5015" className="wd-dashboard-course-link">
-                        <Image src="/images/5015.webp" width={200} height={150} />
+                        <Image src="/images/5015.webp" width={200} height={150} alt={""}/>
                         <div>
                             <h5> CS5015 </h5>
                             <p className="wd-dashboard-course-title">
@@ -34,7 +34,7 @@ export default function Dashboard() {
                 <br />
                 <div className="wd-dashboard-course">
                     <Link href="/Courses/5040" className="wd-dashboard-course-link">
-                        <Image src="/images/5040.jpg" width={200} height={150} />
+                        <Image src="/images/5040.jpg" width={200} height={150} alt={""}/>
                         <div>
                             <h5> CS5040 </h5>
                             <p className="wd-dashboard-course-title">
@@ -47,7 +47,7 @@ export default function Dashboard() {
                 <br />
                 <div className="wd-dashboard-course">
                     <Link href="/Courses/5105" className="wd-dashboard-course-link">
-                        <Image src="/images/5105.webp" width={200} height={150} />
+                        <Image src="/images/5105.webp" width={200} height={150} alt={""}/>
                         <div>
                             <h5> CS5105 </h5>
                             <p className="wd-dashboard-course-title">
@@ -60,7 +60,7 @@ export default function Dashboard() {
                 <br />
                 <div className="wd-dashboard-course">
                     <Link href="/Courses/5101" className="wd-dashboard-course-link">
-                        <Image src="/images/5101.jpg" width={200} height={150} />
+                        <Image src="/images/5101.jpg" width={200} height={150} alt={""}/>
                         <div>
                             <h5> CS5101 </h5>
                             <p className="wd-dashboard-course-title">
@@ -73,7 +73,7 @@ export default function Dashboard() {
                 <br />
                 <div className="wd-dashboard-course">
                     <Link href="/Courses/5005" className="wd-dashboard-course-link">
-                        <Image src="/images/5005.jpg" width={200} height={150} />
+                        <Image src="/images/5005.jpg" width={200} height={150} alt={""}/>
                         <div>
                             <h5> CS5005 </h5>
                             <p className="wd-dashboard-course-title">
@@ -86,7 +86,7 @@ export default function Dashboard() {
                 <br />
                 <div className="wd-dashboard-course">
                     <Link href="/Courses/5006" className="wd-dashboard-course-link">
-                        <Image src="/images/5006.webp" width={200} height={150} />
+                        <Image src="/images/5006.webp" width={200} height={150} alt={""}/>
                         <div>
                             <h5> CS5006 </h5>
                             <p className="wd-dashboard-course-title">
@@ -99,7 +99,7 @@ export default function Dashboard() {
                 <br />
                 <div className="wd-dashboard-course">
                     <Link href="/Courses/5202" className="wd-dashboard-course-link">
-                        <Image src="/images/5202.jpg" width={200} height={150} />
+                        <Image src="/images/5202.jpg" width={200} height={150} alt={""}/>
                         <div>
                             <h5> CS5202 </h5>
                             <p className="wd-dashboard-course-title">
