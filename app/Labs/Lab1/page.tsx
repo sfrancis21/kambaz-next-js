@@ -106,49 +106,49 @@ export default function Lab1() {
                     </tr>
                     <tr>
                         <td>Q3</td>
-                        <td>CSS</td>
+                        <td>JavaScript</td>
                         <td>2/18/21</td>
                         <td>78</td>
                     </tr>
                     <tr>
                         <td>Q4</td>
-                        <td>CSS</td>
+                        <td>Routing</td>
                         <td>2/27/21</td>
                         <td>88</td>
                     </tr>
                     <tr>
                         <td>Q5</td>
-                        <td>CSS</td>
+                        <td>State and Redux</td>
                         <td>3/5/21</td>
                         <td>95</td>
                     </tr>
                     <tr>
                         <td>Q6</td>
-                        <td>CSS</td>
+                        <td>Node</td>
                         <td>3/12/21</td>
                         <td>98</td>
                     </tr>
                     <tr>
                         <td>Q7</td>
-                        <td>CSS</td>
+                        <td>Session</td>
                         <td>3/19/21</td>
                         <td>85</td>
                     </tr>
                     <tr>
                         <td>Q8</td>
-                        <td>CSS</td>
+                        <td>MongoDB</td>
                         <td>3/26/21</td>
                         <td>82</td>
                     </tr>
                     <tr>
                         <td>Q9</td>
-                        <td>CSS</td>
+                        <td>Mongoose</td>
                         <td>4/04/21</td>
                         <td>92</td>
                     </tr>
                     <tr>
                         <td>Q10</td>
-                        <td>CSS</td>
+                        <td>API</td>
                         <td>4/12/21</td>
                         <td>96</td>
                     </tr>
@@ -167,7 +167,7 @@ export default function Lab1() {
             <div id="wd-images">
                 <h4>Image tag</h4>
                 Loading an image from the internet: <br />
-                <Image id="wd-starship" width={200} height={200} src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg" alt={""}/>
+                <img id="wd-starship" width="400px"   src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg" />
                 <br />
                 Loading a local image:
                 <br />
@@ -292,10 +292,10 @@ export default function Lab1() {
             {/*Links*/}
             <h4>Anchor tag</h4>
             Please
-            <a href="https://www.lipsum.com" id="wd-lipsum">click here</a>
+            <a href="https://www.lipsum.com" id="wd-lipsum"> click here </a>
             to get dummy text<br/>
-
-            <a href="https://github.com/sfrancis21/kambaz-next-js" id="wd-github">click here</a>
+            Please
+            <a href="https://github.com/sfrancis21/kambaz-next-js" id="wd-github"> click here </a>
             for github repo<br/>
 
 
