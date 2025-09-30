@@ -1,19 +1,35 @@
 import Link from "next/link";
+import Form from 'react-bootstrap/Form';
+
 export default function Profile() {
     return (
         <div id="wd-profile-screen">
-            <h3>Profile</h3>
-            <input defaultValue="alice" placeholder="username" className="wd-username"/><br/>
-            <input defaultValue="123"   placeholder="password" type="password"
-                   className="wd-password" /><br/>
-            <input defaultValue="Alice" placeholder="First Name" id="wd-firstname" /><br/>
-            <input defaultValue="Wonderland" placeholder="Last Name" id="wd-lastname" /><br/>
-            <input defaultValue="2000-01-01" type="date" id="wd-dob" /><br/>
-            <input defaultValue="alice@wonderland" type="email" id="wd-email" /><br/>
-            <select defaultValue="FACULTY" id="wd-role">
-                <option value="USER">User</option>       <option value="ADMIN">Admin</option>
-                <option value="FACULTY">Faculty</option> <option value="STUDENT">Student</option>
-            </select><br/>
-            <Link href="Signin" > Sign out </Link>
+            <h1>Profile</h1>
+            <Form.Control id="wd-username"
+                          placeholder="username"
+                          className="mb-2" defaultValue="alice"/>
+            <Form.Control id="wd-password"
+                          placeholder="password" type="password"
+                          className="mb-2" defaultValue="123"/>
+            <Form.Control id="wd-firstname"
+                          defaultValue="Alice"
+                          className="mb-2"/>
+            <Form.Control id="wd-lastname"
+                          defaultValue="Wonderland"
+                          className="mb-2"/>
+            <Form.Control id="wd-dob"
+                          type="date"
+                          className="mb-2"/>
+            <Form.Control id="wd-email"
+                          defaultValue="alice@wonderland.com"
+                          className="mb-2"/>
+            <Form.Control id="wd-user"
+                          defaultValue="User"
+                          className="mb-2"/>
+            <Link id="wd-signin-btn"
+                  href="/Account/Signin"
+                  className="btn btn-danger w-100 mb-2 danger">
+                Sign out </Link>
         </div>
+
     );}
