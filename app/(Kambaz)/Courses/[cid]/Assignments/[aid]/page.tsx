@@ -1,10 +1,7 @@
-import { InputGroup } from "react-bootstrap";
-import InputGroupText from "react-bootstrap/esm/InputGroupText";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { BiCalendar } from 'react-icons/bi';
 
 export default function AssignmentEditor() {
     return (
