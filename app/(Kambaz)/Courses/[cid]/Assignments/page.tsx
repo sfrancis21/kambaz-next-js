@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import ModulesControls from "../Assignments/ModulesControls"
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -6,8 +7,12 @@ import LessonControlButtons from "../Assignments/LessonControlButtons"
 import ModuleControlButtons from "../Assignments/ModuleControlButtons"
 import { BsGripVertical } from "react-icons/bs";
 import { IoNewspaper } from 'react-icons/io5';
+import { useParams } from "next/navigation";
+import * as db from "../../../Database";
 
 export default function Assignments() {
+    const { cid } = useParams();
+    const assignments = db.assignments;
     return (
         <div id="wd-assignments">
             <ModulesControls /><br /><br /><br /><br />
@@ -18,71 +23,45 @@ export default function Assignments() {
                         ASSIGNMENTS <ModuleControlButtons />
                     </div>
                     <ListGroup className="wd-assignment-list rounded-0">
-                        <ListGroupItem className="wd-lesson wd-assignment-list-item p-3 ps-1 ">
-                            <div className="d-flex justify-content-between align-items-center">
-                                <div className="flex-shrink-0">
-                                    <BsGripVertical className="me-2 fs-3" />
-                                    <IoNewspaper className="me-2 fs-3 text-success" />
+                        {assignments
+                            .filter((assignment) => assignment.course === cid)
+                            .map((assignment) => (
+                            <ListGroupItem key={assignment._id} className="wd-lesson wd-assignment-list-item p-3 ps-1 ">
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div className="flex-shrink-0">
+                                        <BsGripVertical className="me-2 fs-3" />
+                                        <IoNewspaper className="me-2 fs-3 text-success" />
+                                    </div>
+                                    <div>
+                                        <Link
+                                            href={`/Courses/${cid}/Assignments/${assignment._id}`}
+                                            className="wd-assignment-link text-dark d-block fw-bold text-decoration-none"
+                                        >
+                                            {assignment._id} : {assignment.title}
+                                        </Link>
+                                        <p>
+                                            <span className="text-danger">Multiple Modules</span> | <b>Not available until </b>
+                                                {new Date(assignment.available_date).toLocaleDateString("en-US", {
+                                                month: "long",
+                                                day: "numeric",
+                                                year: "numeric",
+                                            })}
+                                            {" "}| {" "}
+                                            <b>Due </b>
+                                                {new Date(assignment.due_date).toLocaleDateString("en-US", {
+                                                month: "long",
+                                                day: "numeric",
+                                                year: "numeric",
+                                            })}
+                                            {" "}|{" "}
+                                            {assignment.points} pts
+                                        </p>
+                                    </div>
+                                    <div className="flex-shrink-0"><LessonControlButtons /></div>
                                 </div>
-                                <div>
-                                    <Link
-                                        href="/Courses/1234/Assignments/123"
-                                        className="wd-assignment-link text-dark d-block fw-bold text-decoration-none"
-                                    >
-                                        A1
-                                    </Link>
-                                    <p>
-                                        <span className="text-danger">Multiple Modules</span> | <b>Not available until</b> May 6 at 12:00am |{" "}
-                                        <b>Due</b> May 13 at 11:59pm | 100 pts
-                                    </p>
-                                </div>
-                                <div className="flex-shrink-0"><LessonControlButtons /></div>
-                            </div>
-                        </ListGroupItem>
-                        <ListGroupItem className="wd-lesson wd-assignment-list-item p-3 ps-1 ">
-                            <div className="d-flex justify-content-between align-items-center">
-                                <div className="flex-shrink-0">
-                                    <BsGripVertical className="me-2 fs-3" />
-                                    <IoNewspaper className="me-2 fs-3 text-success" />
-                                </div>
-                                <div>
-                                    <Link
-                                        href="/Courses/1234/Assignments/123"
-                                        className="wd-assignment-link text-dark d-block fw-bold text-decoration-none"
-                                    >
-                                        A2
-                                    </Link>
-                                    <p>
-                                        <span className="text-danger">Multiple Modules</span> | <b>Not available until</b> May 10 at 12:00am |{" "}
-                                        <b>Due</b> May 18 at 11:59pm | 100 pts
-                                    </p>
-                                </div>
-                                <div className="flex-shrink-0"><LessonControlButtons /></div>
-                            </div>
-                        </ListGroupItem>
-                        <ListGroupItem className="wd-lesson wd-assignment-list-item p-3 ps-1 ">
-                            <div className="d-flex justify-content-between align-items-center">
-                                <div className="flex-shrink-0">
-                                    <BsGripVertical className="me-2 fs-3" />
-                                    <IoNewspaper className="me-2 fs-3 text-success" />
-                                </div>
-                                <div>
-                                    <Link
-                                        href="/Courses/1234/Assignments/123"
-                                        className="wd-assignment-link text-dark d-block fw-bold text-decoration-none"
-                                    >
-                                        A3
-                                    </Link>
-                                    <p>
-                                        <span className="text-danger">Multiple Modules</span> | <b>Not available until</b> May 20 at 12:00am |{" "}
-                                        <b>Due</b> May 27 at 11:59pm | 100 pts
-                                    </p>
-                                </div>
-                                <div className="flex-shrink-0"><LessonControlButtons /></div>
-                            </div>
-                        </ListGroupItem>
-                    </ListGroup>
-                </ListGroupItem>
+                            </ListGroupItem>
+                            ))}</ListGroup>
+                    </ListGroupItem>
             </ListGroup>
         </div>
     );}
