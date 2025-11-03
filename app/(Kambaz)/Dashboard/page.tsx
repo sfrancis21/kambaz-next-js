@@ -100,7 +100,7 @@ export default function Dashboard() {
                                                 </button>
                                             </div>
                                         )}
-                                        {!isFaculty && (
+                                        {!isFaculty && showAllCourses && (
                                             <Button
                                                 variant={isEnrolled(course._id) ? "danger" : "success"}
                                                 onClick={() => isEnrolled(course._id)
