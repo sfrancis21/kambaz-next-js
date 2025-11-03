@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { courses } from "../../Database";
-export default function CourseNavigation({ cid }: {cid: string}) {
+export default function CourseNavigation({ cid }: any) {
     const pathname = usePathname();
     const course = courses.find((course) => course._id === cid);
     const links = [
