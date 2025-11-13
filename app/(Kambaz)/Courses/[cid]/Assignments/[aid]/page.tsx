@@ -6,7 +6,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../../store";
-import { addAssignment, updateAssignment } from "../reducer";
+import {addAssignment, setAssignments, updateAssignment} from "../reducer";
+import * as client from "../../../client";
 
 export default function AssignmentEditor() {
     const { cid, aid } = useParams();
@@ -23,6 +24,26 @@ export default function AssignmentEditor() {
     const [availableFrom, setAvailableFrom] = useState("");
     const [dueDate, setDueDate] = useState("");
 
+    const onCreateAssignmentForCourse = async () => {
+        if (!cid) return;
+        const newAssignment = {
+            title,
+            description,
+            points,
+            available_date:  availableFrom,
+            due_date: dueDate,
+            course: cid,
+        };
+        const assignment = await client.createAssignmentForCourse(String(cid), newAssignment);
+        dispatch(setAssignments([...assignments, assignment]));
+    };
+    const onUpdateAssignment = async (assignment: any) => {
+        await client.updateAssignment(assignment);
+        const newAssignments = assignments.map((m: any) => m._id === assignment._id ? assignment : m );
+        dispatch(setAssignments(newAssignments));
+    };
+
+
     useEffect(() => {
         if (existingAssignment) {
             setTitle(existingAssignment.title);
@@ -35,23 +56,16 @@ export default function AssignmentEditor() {
 
     const handleSave = () => {
         if (existingAssignment) {
-            dispatch(updateAssignment({
+            onUpdateAssignment({
                 _id: existingAssignment._id,
                 title,
                 description,
                 points,
                 available_date: availableFrom,
                 due_date: dueDate
-            }));
+            });
         } else {
-            dispatch(addAssignment({
-                title,
-                description,
-                points,
-                available_date: availableFrom,
-                due_date: dueDate,
-                course: cid
-            }));
+            onCreateAssignmentForCourse();
         }
         router.push(`/Courses/${cid}/Assignments`);
     };
@@ -89,6 +103,7 @@ export default function AssignmentEditor() {
                             <Form.Control
                                 type="datetime-local"
                                 defaultValue={dueDate}
+                                onChange={(e) => setDueDate(e.target.value)}
                             />
                         </Col>
                     </Row>
@@ -98,6 +113,7 @@ export default function AssignmentEditor() {
                             <Form.Control
                                 type="datetime-local"
                                 defaultValue={availableFrom}
+                                onChange = {(e) => setAvailableFrom(e.target.value)}
                             />
                         </Col>
                         <Col sm={6}>

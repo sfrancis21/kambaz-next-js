@@ -1,15 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import { enrollments as dbEnrollments } from "../Database"; // if you want initial db enrollments
 
 const initialState = {
-    enrollments: dbEnrollments || [],
+    enrollments: [] as any,
 };
 
 const enrollmentsSlice = createSlice({
     name: "enrollments",
     initialState,
     reducers: {
+        setEnrollments: (state, action) => {
+            state.enrollments = action.payload;
+        },
         enroll: (state, { payload: { user, course } }) => {
             const exists = state.enrollments.some(
                 (e: any) => e.user === user && e.course === course
@@ -27,5 +29,5 @@ const enrollmentsSlice = createSlice({
     },
 });
 
-export const { enroll, unenroll } = enrollmentsSlice.actions;
+export const { enroll, unenroll, setEnrollments } = enrollmentsSlice.actions;
 export default enrollmentsSlice.reducer;

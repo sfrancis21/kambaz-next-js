@@ -9,19 +9,33 @@ import { BsGripVertical } from "react-icons/bs";
 import { IoNewspaper } from 'react-icons/io5';
 import { useParams } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 import { RootState } from "../../../store";
-import { addAssignment, deleteAssignment } from "./reducer";
+import { addAssignment, deleteAssignment, updateAssignment, setAssignments } from "./reducer";
+import * as client from "../../client";
 
 export default function Assignments() {
     const { cid } = useParams();
     const dispatch = useDispatch();
     const { assignments } = useSelector((state: RootState) => state.assignmentsReducer);
+    const fetchAssignments = async() => {
+        const assignments = await client.findAssignmentsForCourse(cid as string);
+        dispatch(setAssignments(assignments));
+    };
+    const onRemoveAssignment = async (assignmentId: string) => {
+        await client.deleteAssignment(assignmentId);
+        dispatch(setAssignments(assignments.filter((m: any) => m._id !== assignmentId)));
+    };
 
     const handleDelete = (assignmentId: string) => {
         if (confirm("Are you sure you want to delete this assignment?")) {
-            dispatch(deleteAssignment(assignmentId));
+            onRemoveAssignment(assignmentId);
         }
     };
+    useEffect(() => {
+        fetchAssignments();
+    }, []);
+
 
     const { currentUser } = useSelector((state: RootState) => state.accountReducer);
     // @ts-ignore
@@ -40,7 +54,6 @@ export default function Assignments() {
                     </div>
                     <ListGroup className="wd-assignment-list rounded-0">
                         {assignments
-                            .filter((assignment) => assignment.course === cid)
                             .map((assignment) => (
                                 <ListGroupItem key={assignment._id} className="wd-lesson wd-assignment-list-item p-3 ps-1">
                                     <div className="d-flex justify-content-between align-items-center">
