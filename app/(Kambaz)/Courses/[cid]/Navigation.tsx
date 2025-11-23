@@ -14,7 +14,7 @@ export default function CourseNavigation({ cid }: any) {
         {label: "Assignments", path: `/Courses/${course?._id}/Assignments`},
         {label: "Quizzes", path: `/Courses/${course?._id}/Quizzes`},
         {label: "Grades", path: `/Courses/${course?._id}/Grades`},
-        {label: "People", path: `/Courses/${course?._id}/People/Table`},
+        {label: "People", path: `/Courses/${course?._id}/People`},
     ];
     return (
         <ListGroup id="wd-courses-navigation"  className="wd list-group fs-5">

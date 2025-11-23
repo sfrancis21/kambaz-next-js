@@ -119,7 +119,7 @@ export default function Dashboard() {
             <div id="wd-dashboard-courses">
                 <Row xs={1} md={5} className="g-4">
                     {courses.map((course) => (
-                        <Col key={course._id} className="wd-dashboard-course" style={{ width: "300px" }}>
+                        <Col  key={course._id} className="wd-dashboard-course" style={{ width: "300px" }}>
                             <Card>
                                     <Card.Img src="/images/reactjs.webp" variant="top" width="100%" height={160} />
                                     <Card.Body className="card-body">
