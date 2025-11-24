@@ -8,6 +8,8 @@ import Link from "next/link";
 export default function PeopleTable({ users = [], fetchUsers }: { users?: any[]; fetchUsers: () => void; }) {
     const [showDetails, setShowDetails] = useState(false);
     const [showUserId, setShowUserId] = useState<string | null>(null);
+
+
     return (
         <div id="wd-people-table">
             {showDetails && (

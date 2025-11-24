@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from "react";
 import PeopleTable from "./Table";
-import * as client from "../../../Account/client";
+import * as client from "../../client";
+import { useParams } from "next/navigation";
 
 export default function UsersPage() {
+    const { cid } = useParams();
     const [users, setUsers] = useState<any[]>([]);
 
     const fetchUsers = async () => {
-        const data = await client.findAllUsers();
+        const data = await client.findUsersForCourse(cid as string);
         setUsers(data);
     };
 

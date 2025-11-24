@@ -28,8 +28,7 @@ export default function Dashboard() {
     const [showAllCourses, setShowAllCourses] = useState(false);
     const toggleShowAll = () => setShowAllCourses(!showAllCourses);
     const isEnrolled = (courseId: string) => {
-        if (!userId) return false;
-        return enrollments.some((e: { user: any; course: string; }) => e.user === userId && e.course === courseId);
+        return myCourses.some(c => c._id === courseId);
     };
     const onAddNewCourse = async () => {
         const newCourse = await client.createCourse(course);
@@ -49,7 +48,7 @@ export default function Dashboard() {
 
     const handleEnroll = async (courseId: string) => {
         if (!currentUser) return;
-        const enrollment = await client.enrollUserInCourse(
+        const enrollment = await client.enrollIntoCourse(
             userId,
             courseId
         );
@@ -58,7 +57,7 @@ export default function Dashboard() {
 
     const handleUnenroll = async (courseId: string) => {
         if (!currentUser) return;
-        await client.unenrollUserFromCourse(userId, courseId);
+        await client.unenrollFromCourse(userId, courseId);
         dispatch(unenroll({ user: userId, course: courseId }));
     };
 
@@ -81,9 +80,17 @@ export default function Dashboard() {
         dispatch(setEnrollments(data));
     };
 
+    const [myCourses, setMyCourses] = useState<any[]>([]);
+
+    const fetchMyCourses = async () => {
+        const data = await client.findMyCourses();
+        setMyCourses(data);
+    };
+
     useEffect(() => {
         fetchCourses();
         fetchEnrollments();
+        fetchMyCourses();
     }, [showAllCourses, currentUser]);
 
     return (
